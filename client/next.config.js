@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const path = require("path");
 const nextConfig = {
   reactStrictMode: true,
   env: {
@@ -12,6 +13,9 @@ const nextConfig = {
     NEXT_PUBLIC_THEME_MODE: "light",
     NEXT_PUBLIC_NAV_STYLE: "default",
     NEXT_PUBLIC_LAYOUT_TYPE: "full-width",
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, "styles")],
   },
 };
 

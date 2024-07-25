@@ -105,6 +105,7 @@ const JWTAuthAuthProvider: React.FC<JWTAuthAuthProviderProps> = ({
   }) => {
     infoViewActionsContext.fetchStart();
     try {
+      console.log(email, password);
       const { data } = await jwtAxios.post("auth", { email, password });
       localStorage.setItem("token", data.token);
       setAuthToken(data.token);
