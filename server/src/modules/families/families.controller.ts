@@ -21,14 +21,14 @@ export class FamiliesController {
   async createFamily(
     @Body() familyCreateDto: FamilyCreateDto,
   ): Promise<Family> {
-    const findOneFamily = await this.familiesService.findOnByName(
-      familyCreateDto.name,
-    );
-    if (findOneFamily)
-      throw new HttpException(
-        `Family name ${familyCreateDto.name} already existed. Please try another name.`,
-        HttpStatus.BAD_REQUEST,
-      );
+    // const findOneFamily = await this.familiesService.findOnByName(
+    //   familyCreateDto.name,
+    // );
+    // if (findOneFamily)
+    //   throw new HttpException(
+    //     `Family name ${familyCreateDto.name} already existed. Please try another name.`,
+    //     HttpStatus.BAD_REQUEST,
+    //   );
     return await this.familiesService.createFamily(familyCreateDto);
   }
   

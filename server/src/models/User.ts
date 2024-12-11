@@ -11,16 +11,16 @@ export class User extends BaseDeleteEntity {
   @Column({ type: 'enum', enum: GenderEnums, default: GenderEnums.MALE })
   gender: GenderEnums;
 
-  @Column({ nullable: true })
+  @Column()
   firstName?: string;
 
-  @Column({ nullable: true })
+  @Column()
   lastName?: string;
 
-  @Column({ nullable: true })
+  @Column({ unique: true })
   displayName?: string;
 
-  @Column({ nullable: true })
+  @Column()
   email?: string;
 
   @Column({ nullable: true })
