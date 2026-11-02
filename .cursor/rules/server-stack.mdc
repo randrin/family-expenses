@@ -1,0 +1,24 @@
+---
+description: Stack et conventions du serveur family-expenses (NestJS, PostgreSQL, TypeORM, JWT, class-validator)
+globs: server/**/*
+alwaysApply: false
+---
+
+# Server — Stack
+
+NestJS, TypeScript, PostgreSQL, TypeORM, JWT, class-validator + class-transformer
+
+## Obligatoire
+- Module + controller + service + `dto/`
+- DTOs `class-validator` / `class-transformer`
+- TypeORM `Repository`, migrations, `synchronize: false`
+- JWT sur toutes les routes sauf register / login
+- Port 3001
+
+## Interdit
+- Métier ou TypeORM dans le controller
+- `userId`, `familyId` ou `role` dans le body
+- `Math.random` pour le code foyer
+- Suppression physique d'une dépense
+
+Détail : `.cursor/skills/server-stack/SKILL.md`

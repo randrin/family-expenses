@@ -1,0 +1,21 @@
+---
+description: Règles métier client — foyer, dépenses en centimes, catégories, rôles
+globs: client/**/*
+alwaysApply: false
+---
+
+# Client — Règles métier
+
+- Hors `/` et `/auth/*` : session NextAuth. `userId` et `familyId` viennent de la session.
+- Un utilisateur, un foyer. Code à 5 chiffres généré par l'API.
+- Dépense : `amountMinor` entier > 0, date calendaire non future, catégorie du foyer.
+- Statuts : `posted` → `void`. Les totaux ignorent `void`. Pas de delete.
+- Catégories du foyer, gérées par le propriétaire. Pas d'enum figé.
+- Devise choisie à la création du foyer, figée après la première dépense `posted`.
+
+Détail : `.cursor/skills/client-stack/business-rules.md`
+
+```ts
+createExpenseSchema.parse({ amountMinor: 0 }); // refus
+createExpenseSchema.parse({ amountMinor: 1250, spentOn: "2026-11-02", categoryId }); // ok
+```

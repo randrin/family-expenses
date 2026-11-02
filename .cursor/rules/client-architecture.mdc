@@ -1,0 +1,24 @@
+---
+description: Architecture client family-expenses — App Router, Zustand, Query, Axios, Zod, NextAuth
+globs: client/**/*
+alwaysApply: false
+---
+
+# Client — Architecture
+
+| Données | Où |
+|---------|-----|
+| UI (période, filtres, sheets) | `src/stores/` Zustand |
+| Serveur (foyer, dépenses, catégories) | `src/hooks/` TanStack Query |
+| HTTP | `src/api/` Axios |
+| Validation | `src/schemas/` Zod |
+| Session | `src/auth/` NextAuth v5 |
+
+Le starter est `client/app/` sans `src/`. Déplacer vers `src/app/` avant les features. Layout : SessionProvider → Query → Theme.
+
+Détail : `.cursor/skills/client-stack/architecture.md`
+
+```ts
+const { data: expenses } = useExpenses();
+const openCreate = useExpensesStore((s) => s.openCreate);
+```

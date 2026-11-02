@@ -1,0 +1,20 @@
+---
+description: Règles métier serveur — foyer, adhésion, dépenses en centimes, catégories
+globs: server/**/*
+alwaysApply: false
+---
+
+# Server — Règles métier
+
+- Une adhésion active par utilisateur. Le code foyer à 5 chiffres est généré par l'API.
+- Dépense : `amountMinor` entier > 0, date UTC non future, catégorie du même foyer.
+- Cycle `posted` → `void`. Pas de DELETE, pas de modification du montant.
+- Devise figée dès la première dépense `posted`.
+- Catégories du foyer, propriétaire seulement. Suppression refusée si une dépense les référence.
+- Autre foyer → 404. Action propriétaire par un membre → 403.
+
+Détail : `.cursor/skills/server-stack/business-rules.md`
+
+```ts
+crypto.randomInt(0, 100_000).toString().padStart(5, "0"); // code foyer
+```

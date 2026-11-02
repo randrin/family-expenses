@@ -1,0 +1,23 @@
+---
+description: Tests client — Vitest (unitaires) et Playwright (e2e)
+globs: client/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Client — Tests
+
+- **Vitest** : schémas Zod, stores Zustand, format des centimes, hooks Query (Axios mocké).
+- **Playwright** : inscription → foyer → dépense `posted` → annulation `void` → logout.
+- Fichiers : `*.test.ts` à côté du code ; e2e dans `e2e/`.
+- Un parcours utilisateur modifié = un test de schema ou un test e2e.
+
+```ts
+import { expect, it } from "vitest";
+import { createExpenseSchema } from "@/schemas/expense.schema";
+
+it("refuse un montant nul", () => {
+  expect(createExpenseSchema.safeParse({ amountMinor: 0 }).success).toBe(false);
+});
+```
+
+Détail : `.cursor/skills/client-stack/SKILL.md`

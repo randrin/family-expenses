@@ -1,0 +1,20 @@
+---
+description: Tests serveur — Vitest unitaire et e2e supertest
+globs: server/**/*.ts
+alwaysApply: false
+---
+
+# Server — Tests
+
+- **Vitest** : services (foyer, code, centimes, void, devise figée). Repository mocké.
+- **e2e** : supertest sur register → login → foyer → dépense `posted` → `void`.
+- Un invariant métier modifié = un test de service.
+- Ne pas exiger PostgreSQL pour un test unitaire de règle.
+
+```ts
+it("refuse un montant nul", () => {
+  expect(() => service.assertAmount(0)).toThrow(BadRequestException);
+});
+```
+
+Détail : `.cursor/skills/server-stack/SKILL.md`

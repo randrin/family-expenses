@@ -1,0 +1,26 @@
+---
+description: Stack et conventions du client family-expenses (Next.js 16, React 19, Tailwind v4, shadcn, Zustand, Query, Zod, NextAuth v5)
+globs: client/**/*
+alwaysApply: false
+---
+
+# Client — Stack
+
+Next.js 16 · React 19 · TypeScript strict · Tailwind v4 · Shadcn/UI
+Zustand · TanStack React Query · Axios · Zod
+NextAuth v5 · Vitest · Playwright
+
+## Obligatoire
+- App Router (`src/app/`), `"use client"` si état ou événements
+- Alias `@/` — `cn()` pour les classes
+- Types stricts, pas de `any` — inférer depuis Zod
+- shadcn avant tout nouveau composant UI
+- Montants en centimes entiers
+
+## Interdit
+- Pages Router, `fetch` dans `useEffect`
+- Dépenses ou foyer dans Zustand ou `localStorage`
+- Code foyer généré côté client
+- Suppression physique d'une dépense
+
+Détail : `.cursor/skills/client-stack/SKILL.md`

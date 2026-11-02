@@ -1,0 +1,24 @@
+---
+description: Architecture serveur — controllers, services, TypeORM, JWT
+globs: server/**/*
+alwaysApply: false
+---
+
+# Server — Architecture
+
+| Données | Où |
+|---------|-----|
+| HTTP | `src/modules/*/*.controller.ts` |
+| Métier | `src/modules/*/*.service.ts` |
+| Persistance | `src/entities/` + `src/database/` |
+| Validation | `dto/` class-validator |
+| Session | JWT, `payload.sub` |
+
+Le starter n'a que `AppModule` et Observe. Ne pas y mettre le métier. PostgreSQL via TypeORM, `synchronize: false`.
+
+Détail : `.cursor/skills/server-stack/architecture.md`
+
+```ts
+const expense = await this.expenses.findOne({ where: { id, familyId } });
+if (!expense) throw new NotFoundException();
+```
